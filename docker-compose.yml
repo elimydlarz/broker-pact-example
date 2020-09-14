@@ -6,7 +6,7 @@ services:
     healthcheck:
       test: psql postgres --command "select 1" -U postgres
     ports:
-      - "5432:5432"
+      - "5433:5433"
     volumes:
       - postgres-volume:/var/lib/postgresql/data
     environment:
@@ -24,6 +24,7 @@ services:
     environment:
       PACT_BROKER_PORT: '9292'
       PACT_BROKER_DATABASE_URL: "postgres://postgres:password@postgres/postgres"
+      PACT_BROKER_DATABASE_PORT: "5433"
       PACT_BROKER_LOG_LEVEL: INFO
       PACT_BROKER_SQL_LOG_LEVEL: DEBUG
 
